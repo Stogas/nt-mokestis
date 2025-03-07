@@ -1,13 +1,92 @@
+/* src/index.css */
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  color: #212529;
+  font-size: 14px; /* Slightly increased for better readability */
+}
+
+h1, h2 {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 1.8em;
+  color: #333;
+}
+
+h2 {
+  font-size: 1.4em;
+  color: #555;
+}
+
+p, ul {
+  line-height: 1.6; /* Increased for better readability */
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  list-style-type: circle;
+  padding-left: 20px;
+  color: #666; /* Darker shade for contrast */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  display: inline-block;
+  margin: 0 2px; /* Space around codes */
+}
+
+header {
+  padding: 20px 10px;
+  background-color: #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Slightly more pronounced shadow */
+  border-radius: 5px; /* Rounded corners for header */
+}
+
+.results-container {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #f7f9fb; /* Lighter background for results container */
+  border-radius: 8px; /* More pronounced rounded corners */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center; /* Center align content */
+  align-items: center; /* Centers items vertically */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Spacing above the table */
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+button {
+  font-family: 'Arial', sans-serif;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px; /* Rounded corners for the button */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
 }

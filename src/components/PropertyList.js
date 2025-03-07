@@ -1,4 +1,5 @@
 // src/components/PropertyList.js
+
 import React from 'react';
 
 function PropertyList({ properties }) {
