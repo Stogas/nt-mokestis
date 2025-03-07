@@ -1,70 +1,54 @@
 // src/App.js
-import React, { useState, useEffect, useCallback } from 'react';
-import './App.css';
+import React, { useState } from 'react';
 import PropertyInput from './components/PropertyInput';
 import PropertyList from './components/PropertyList';
-import Results from './components/Results';
-
 function App() {
   const [properties, setProperties] = useState([]);
-  const [totalValue, setTotalValue] = useState(0);
-  const [tax, setTax] = useState(0);
   const [inputValue, setInputValue] = useState('');
+  const [propertyName, setPropertyName] = useState('');
 
-  function addProperty(value) {
-    if (value > 0 && !properties.includes(value)) {
-      setProperties((prevProps) => [...prevProps, value]);
-    }
-  }
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
-  function handleInputChange(event) {
-    setInputValue(event.target.value);
-  }
+  const handleNameChange = (e) => {
+    setPropertyName(e.target.value);
+  };
 
-  function handleSubmit() {
-    const value = Number(inputValue);
-              addProperty(value);
-    setInputValue(''); // Clear the input field after adding
-  }
+  const handleSubmit = () => {
+    if (!inputValue || !propertyName) return;
 
-  const calculateTotal = useCallback(() => {
-    let total = properties.reduce((acc, curr) => acc + curr, 0);
-    setTotalValue(total);
-    calculateTax(total);
-  }, [properties]); // dependencies include properties
-
-  useEffect(() => {
-    calculateTotal();
-  }, [calculateTotal]);
-  function calculateTax(total) {
-    let untaxedValue = Math.min(20000, total);
-    let taxedValue1 = Math.max(0, Math.min(150000 - 20000, total - untaxedValue));
-    let taxedValue2 = Math.max(0, Math.min(300000 - 150000, total - 150000 - untaxedValue));
-    let taxedValue3 = Math.max(0, Math.min(500000 - 300000, total - 300000 - untaxedValue));
-    let taxedValue4 = Math.max(0, total - 500000 - untaxedValue);
-
-    let taxAmount =
-      (taxedValue1 * 0.002) +
-      (taxedValue2 * 0.005) +
-      (taxedValue3 * 0.01) +
-      (taxedValue4 * 0.02);
-
-    setTax(taxAmount);
-  }
-
+    setProperties([
+      ...properties,
+      { name: propertyName, value: parseFloat(inputValue) },
+    ]);
+    setInputValue('');
+    setPropertyName('');
+  };
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Real Estate Tax Calculator</h1>
-        <p>Add properties and calculate tax.</p>
+        <h1>Real Estate Tax Calculator for Lithuanian Residents</h1>
+        <p>This application calculates the taxes that need to be paid based on the new real estate tax regulations in Lithuania.</p>
+        <p>The app is designed to determine your tax obligations if you are a resident of Lithuania, owning one or more properties. It calculates the tax according to these rules:</p>
+        <ul>
+          <li>The first €20,000 value from the total property portfolio is untaxed (0%).</li>
+          <li>For values above €20,000 and up to €150,000, the taxed amount at 0.2%.</li>
+          <li>For values above €150,000 and up to €300,000, the taxed amount at 0.5%.</li>
+          <li>For values above €300,000 and up to €500,000, the taxed amount at 1%.</li>
+          <li>Any value exceeding €500,000 is taxed at 2%.</li>
+        </ul>
+        <p>The total tax is calculated based on the combined value of all properties you own.</p>
         <PropertyInput
           inputValue={inputValue}
+          propertyName={propertyName}
           handleInputChange={handleInputChange}
+          handleNameChange={handleNameChange}
           handleSubmit={handleSubmit}
         />
+
         <h2>Properties:</h2>
-        <PropertyList properties={properties} />
-        <Results totalValue={totalValue} tax={tax} />
+        <PropertyList properties={properties.map(property => property.value)} />
       </header>
     </div>
   );

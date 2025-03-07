@@ -3,11 +3,22 @@ import React from 'react';
 
 function PropertyList({ properties }) {
   return (
-    <ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Property Name</th>
+          <th>Value (€)</th>
+        </tr>
+      </thead>
+      <tbody>
       {properties.map((property, index) => (
-        <li key={index}>€{property.toFixed(2)}</li>
+          <tr key={index}>
+            <td>{property.name}</td>
+            <td>{property.value.toFixed(2)}</td>
+          </tr>
       ))}
-    </ul>
+      </tbody>
+    </table>
   );
 }
 
