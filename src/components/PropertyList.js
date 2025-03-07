@@ -4,7 +4,7 @@ import React from 'react';
 
 function PropertyList({ properties }) {
   return (
-    <table>
+    <table style={{ borderCollapse: "collapse", marginTop: 20 }}>
       <thead>
         <tr>
           <th>Property Name</th>

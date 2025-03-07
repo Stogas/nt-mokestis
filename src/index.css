@@ -29,12 +29,14 @@ h2 {
 p, ul {
   line-height: 1.6; /* Increased for better readability */
   margin-bottom: 0.5rem;
+  text-align: center; /* Center aligned paragraphs and lists */
 }
 
 ul {
   list-style-type: circle;
   padding-left: 20px;
   color: #666; /* Darker shade for contrast */
+  text-align: center; /* Center aligned lists */
 }
 
 code {
@@ -66,7 +68,6 @@ header {
 
 table {
   width: 100%;
-  border-collapse: collapse;
   margin-top: 20px; /* Spacing above the table */
 }
 
