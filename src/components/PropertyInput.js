@@ -1,9 +1,11 @@
 // src/components/PropertyInput.js
+
 import React from 'react';
+import './PropertyInput.css'; // Ensure CSS import is added here
 
 function PropertyInput({ inputValue, propertyName, handleInputChange, handleNameChange, handleSubmit }) {
   return (
-    <div>
+    <div className="property-input-container">
       <label htmlFor="propertyName">Property Name: </label>
       <input
         type="text"

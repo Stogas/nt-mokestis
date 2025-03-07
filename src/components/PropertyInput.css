@@ -1,0 +1,17 @@
+/* src/components/PropertyInput.css */
+
+.property-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  gap: 10px; /* Space between elements */
+  text-align: center;
+}
+
+.property-input-container input, .property-input-container button {
+  width: 200px; /* Set a consistent width for inputs and buttons */
+}
+
+.property-input-container button {
+  margin-top: 15px; /* Add space above the button */
+}
